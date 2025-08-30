@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('lokasi');
             $table->date('tanggal_berangkat');
             $table->date('tanggal_pulang');
-            $table->integer('nip');
-            $table->foreign('nip')->references('nip')->on('pegawai')->onDelete('cascade');
+            $table->integer('no_induk');
+            $table->foreign('no_induk')->references('no_induk')->on('pegawai')->onDelete('cascade');
             $table->enum('status', ['belum','berlangsung', 'selesai'])->default('berlangsung');
             $table->text('catatan_lainnya');
             $table->timestamps();
