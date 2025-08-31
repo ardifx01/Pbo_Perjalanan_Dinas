@@ -11,7 +11,15 @@
 </head>
 
 <body class="min-h-screen flex items-center justify-center bg-emerald-900">
-
+    @if ($errors->any())
+        <div class="alert alert-danger absolute top-0 bg-white text-red-500 text-center">
+            <ul>
+                @foreach ($errors->all() as $err)
+                    <li>{{ $err }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="bg-white w-96 p-8 rounded-xl shadow-lg">
         <!-- Logo -->
         <div class="flex flex-col items-center mb-6">
@@ -20,13 +28,13 @@
         </div>
 
         <!-- Form -->
-        <form method="POST" action="#">
+        <form method="POST" action="{{  route("login.process")}}">
             @csrf
 
             <!-- NIK -->
             <div class="mb-4">
                 <label for="nik" class="block text-sm font-medium text-gray-700 mb-1">NIK</label>
-                <input type="text" id="nik" name="nik" required
+                <input type="text" id="nik" name="no_induk" required
                     class="w-full px-3 py-2 border border-emerald-500 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-600">
             </div>
 

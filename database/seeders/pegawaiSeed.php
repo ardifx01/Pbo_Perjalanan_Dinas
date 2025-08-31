@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class pegawaiSeed extends Seeder
@@ -21,9 +22,10 @@ class pegawaiSeed extends Seeder
                 'nama' => $faker->name,
                 'email'=> $faker->email,
                 'no_telepon' => $faker->numberBetween(10, 99),
-                'password' => 1234,
+                'password' => Hash::make('1234'),
                 'role' => $faker->randomElement(['admin', 'pegawai']),
             ]);
+            
         }
     }
 }
