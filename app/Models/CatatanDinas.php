@@ -4,19 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class catatan_dinas extends Model
+class CatatanDinas extends Model
 {
     protected $table = "catatandinas";
-        protected $fillable = [
-        'no_induk',
+
+    protected $fillable = [
         'lokasi',
         'tanggal_berangkat',
         'tanggal_pulang',
+        'no_induk',
         'status',
         'catatan_lainnya'
     ];
-    public function Pegawai()
+
+    public function pegawai()
     {
-        return $this->belongsTo(pegawai::class, 'no_induk', 'no_induk');
+        return $this->belongsTo(Pegawai::class, 'no_induk', 'no_induk');
     }
 }
+

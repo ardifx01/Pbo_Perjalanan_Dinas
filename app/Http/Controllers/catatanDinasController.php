@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\catatan_dinas;
+use App\Models\CatatanDinas;
 use Illuminate\Support\Facades\Auth;
+use App\Models\pegawai;
 class catatanDinasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(catatan_dinas $catatan)
+    public function index(CatatanDinas $catatan)
     {
         $data = $catatan::all();
         return view('test00.crud.test' ,compact('data'));
@@ -29,7 +30,7 @@ class catatanDinasController extends Controller
      */
     public function store(Request $request)
     {
-        catatan_dinas::create(([
+        CatatanDinas::create(([
             'no_induk' => Auth::user()->no_induk, // FK ke pegawai
             'lokasi' => $request->lokasi,
             'tanggal_berangkat' => $request->tanggal_berangkat,
@@ -53,26 +54,27 @@ class catatanDinasController extends Controller
      */
     public function edit(string $id)
     {
-        $catatan = catatan_dinas::find($id);
-        return view("test00.crud.testpormedit" ,compact('catatan'));
+        $catatan = CatatanDinas::find($id);
+        $pegawai = pegawai::all();
+        return view("test00.crud.testpormedit" ,compact('catatan', 'pegawai'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, catatan_dinas $catatan)
+    
+    public function update(Request $request, String $id)
     {
-        dd($request->all()); // cek isi
+        $catatan = CatatanDinas::find($id);
         $catatan->update($request->all());
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('catatan.index');
     }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        catatan_dinas::destroy($id);
+        CatatanDinas::destroy($id);
         return redirect()->route('catatan.index');
     }
 }
