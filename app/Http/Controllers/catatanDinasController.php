@@ -39,6 +39,7 @@ class catatanDinasController extends Controller
             'catatan_lainnya' => $request->catatan_lainnya,
         ]));
         return redirect()->route('admin.dashboard');
+        //w
     }
 
     /**
