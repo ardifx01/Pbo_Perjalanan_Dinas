@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
-            $table->integer('nip')->unique();
+            $table->integer('no_induk')->unique();
             $table->string('nama');
             $table->string('email');
             $table->integer('no_telepon');
             $table->string('password');
+            $table->enum('role', ['admin', 'pegawai'])->default('pegawai');
             $table->timestamps();
         });
     }

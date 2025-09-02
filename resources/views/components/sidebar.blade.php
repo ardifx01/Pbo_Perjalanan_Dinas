@@ -28,8 +28,11 @@
 
     <!-- Bagian bawah (Logout) -->
     <div class="p-4">
-        <button class="w-full bg-red-700 hover:bg-red-800 text-white py-2 rounded-md transition">
-            Logout
-        </button>
+        <form action="{{ route("logout.process") }}" method="POST">
+             @csrf        
+            <button class="w-full bg-red-700 hover:bg-red-800 text-white py-2 rounded-md transition">
+                Logout
+            </button>
+        </form>
     </div>
 </div>
