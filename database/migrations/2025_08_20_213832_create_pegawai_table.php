@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('no_induk')->unique();
             $table->string('nama');
             $table->string('email');
-            $table->integer('no_telepon');
+            $table->string('no_telepon');
             $table->string('password');
             $table->enum('role', ['admin', 'pegawai'])->default('pegawai');
             $table->timestamps();
