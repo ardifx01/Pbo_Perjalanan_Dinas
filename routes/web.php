@@ -1,9 +1,10 @@
 <?php
 
+use App\Exports\PegawaiExport;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatatanDinasController;
-use App\Http\Controllers\pegawai;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -26,18 +27,8 @@ Route::post('/logout', [AuthController::class, 'Logout'])->name('logout.process'
 
 // Pegawai routes
 Route::middleware(['auth', 'role:pegawai'])->group(function () {
-    Route::get('/pegawai', [pegawai::class, 'index'])->name('#');
+    Route::get('/pegawai', [PegawaiController::class, 'index'])->name('#');
 });
 
 // Route export
 Route::get('/export/pegawai', [ExportController::class, 'exportPegawai']);
-
-// Route api untuk chart jumlah pegawai
-Route::get('/api/employees/count', function () {
-    $total = DB::table('employees')->count();
-
-    return response()->json([
-        'labels' => ['Total Pegawai'],
-        'values' => [$total],
-    ]);
-});
