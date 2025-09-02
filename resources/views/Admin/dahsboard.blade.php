@@ -1,5 +1,5 @@
 @extends('layouts.app')
-//dadadadadad
+
 @section('content')
 <div class="p-6 bg-gray-100 min-h-screen">
     <h1 class="text-2xl font-bold mb-6">Selamat datang Admin</h1>
@@ -32,7 +32,7 @@
                 Export data perjalanan pegawai
             </h3>
             <a href="{{ route('employees.export') }}"
-               class="bg-green-900 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg">
+            class="bg-green-900 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg">
                 EKSPOR
             </a>
         </div>
