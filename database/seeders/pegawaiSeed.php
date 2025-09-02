@@ -18,10 +18,10 @@ class pegawaiSeed extends Seeder
         for($i = 0; $i <= 10; $i++){
             $faker = Faker::create('id_ID');
             DB::table("pegawai")->insert([
-                'no_induk' => $faker->unique()->numberBetween(0, 100),
+                'no_induk' => $faker->unique()->numberBetween(100000, 200000),
                 'nama' => $faker->name,
                 'email'=> $faker->email,
-                'no_telepon' => $faker->numberBetween(10, 99),
+                'no_telepon' => $faker->phoneNumber(),
                 'password' => Hash::make('1234'),
                 'role' => $faker->randomElement(['admin', 'pegawai']),
             ]);
