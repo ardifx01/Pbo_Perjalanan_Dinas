@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class admin extends Controller
 {
     public function index(){
-        return view("idle");
+        return view("Admin.dahsboard");
     }
 }

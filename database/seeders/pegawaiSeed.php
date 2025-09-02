@@ -12,20 +12,20 @@ use Illuminate\Support\Facades\Hash;
 class pegawaiSeed extends Seeder
 {
 
-    
+
     public function run(): void
     {
         for($i = 0; $i <= 10; $i++){
             $faker = Faker::create('id_ID');
             DB::table("pegawai")->insert([
-                'no_induk' => $faker->numberBetween(0, 100),
+                'no_induk' => $faker->unique()->numberBetween(0, 100),
                 'nama' => $faker->name,
                 'email'=> $faker->email,
                 'no_telepon' => $faker->numberBetween(10, 99),
                 'password' => Hash::make('1234'),
                 'role' => $faker->randomElement(['admin', 'pegawai']),
             ]);
-            
+
         }
     }
 }

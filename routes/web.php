@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\EmployeeExportController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatatanDinasController;
-use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\pegawai;
+use App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -19,18 +19,18 @@ Route::post('/login', [AuthController::class, 'LoginProcess'])->name('login.proc
 Route::post('/logout', [AuthController::class, 'Logout'])->name('logout.process');
 
 // Admin routes
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin', [admin::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/catatandinas', CatatanDinasController::class)->names('catatan');
-});
+// });
 
 // Pegawai routes
 Route::middleware(['auth', 'role:pegawai'])->group(function () {
-    Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.dashboard');
+    Route::get('/pegawai', [pegawai::class, 'index'])->name('#');
 });
 
 // Route export
-Route::get('/export/employees', [EmployeeExportController::class, 'export'])->name('employees.export');
+Route::get('/export/pegawai', [ExportController::class, 'exportPegawai']);
 
 // Route api untuk chart jumlah pegawai
 Route::get('/api/employees/count', function () {

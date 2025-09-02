@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-6 bg-gray-100 min-h-screen">
+<div class="p-6 bg-white min-h-screen">
     <h1 class="text-2xl font-bold mb-6">Selamat datang Admin</h1>
 
     <!-- Card Utama -->
@@ -31,7 +31,7 @@
             <h3 class="text-center text-white font-semibold mb-4">
                 Export data perjalanan pegawai
             </h3>
-            <a href="{{ route('employees.export') }}"
+            <a href="{{ url('/export/pegawai') }}"
             class="bg-green-900 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg">
                 EKSPOR
             </a>
