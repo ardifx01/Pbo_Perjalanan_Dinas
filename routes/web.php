@@ -15,7 +15,6 @@ Route::post('/login', [AuthController::class, 'LoginProcess'])->name('login.proc
 Route::post('/logout', [AuthController::class, 'Logout'])->name('logout.process');
 
 
-
 Route::middleware(['auth:pegawai', 'pegawai:admin'])->group(function () {
     Route::get('/admin', [admin::class, 'index'])
          ->name('admin.dashboard');
