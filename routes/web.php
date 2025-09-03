@@ -21,13 +21,18 @@ Route::post('/logout', [AuthController::class, 'Logout'])->name('logout.process'
 
 // Admin routes
 // Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', [admin::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin', [admin::class, 'index'])->name('admin.dahsboard');
+    Route::get('/admin/daftar_pegawai', [PegawaiController::class, 'list'])->name('admin.pegawai.list');
+    Route::get('/admin/daftar_pegawai/create', [PegawaiController::class, 'create'])->name('admin.pegawai.create');
+    Route::post('/admin/daftar_pegawai/store', [PegawaiController::class, 'store'])->name('admin.pegawai.store');
+    Route::put('/admin/pegawai/{id}', [PegawaiController::class, 'update'])->name('admin.pegawai.update');
+
     Route::resource('/admin/catatandinas', CatatanDinasController::class)->names('catatan');
 // });
 
 // Pegawai routes
 Route::middleware(['auth', 'role:pegawai'])->group(function () {
-    Route::get('/pegawai', [PegawaiController::class, 'index'])->name('#');
+    Route::get('/pegawai/dashboard', [PegawaiController::class, 'index'])->name('pegawai.dashboard');
 });
 
 // Route export

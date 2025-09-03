@@ -22,22 +22,22 @@ class AuthController extends Controller
             'password' => ['required', 'string']
         ]);
 
-       
+
         $_pegawai = pegawai::where('no_induk', $_loginVal['no_induk'])->first();
 
         if($_pegawai && Hash::check($_loginVal['password'], $_pegawai->password)){
-            Auth::guard('pegawai')->login($_pegawai); 
+            Auth::guard('pegawai')->login($_pegawai);
             $request->session()->regenerate();
-            
+
             if($_pegawai->role === 'admin')
             {
-                return redirect()->route("admin.dashboard");
+                return redirect()->route("admin.dahsboard");
             }
             else
             {
                 return redirect()->route("pegawai.dashboard");
             }
-        } 
+        }
         else{
              return back()->withErrors([
             'no_induk' => 'The provided credentials do not match our records.',

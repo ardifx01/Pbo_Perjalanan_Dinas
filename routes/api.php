@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
 
 Route::get('/employees/count', [PegawaiController::class, 'count']);
+
