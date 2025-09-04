@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class pegawaiSeed extends Seeder
 {
-
-
     public function run(): void
     {
         for($i = 0; $i <= 10; $i++){

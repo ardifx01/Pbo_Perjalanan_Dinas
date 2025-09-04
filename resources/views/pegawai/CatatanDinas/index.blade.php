@@ -6,8 +6,8 @@
 
     <!-- Tombol Create -->
     <div class="mb-4">
-        <a href="{{ route('admin.pegawai.create') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg">
-            <i class="fas fa-user-plus"></i> Create Pegawai
+        <a href="{{ route('pegawai.catatan.create') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg">
+            <i class="fas fa-user-plus"></i> Create Data
         </a>
     </div>
 
@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($pegawai as $index => $p)
+                @forelse($data as $index => $p)
                     <tr id="row-{{ $p->id }}" class="{{ $index % 2 == 0 ? 'bg-gray-100' : 'bg-white' }}">
                         <td class="px-4 py-2 border text-center">{{ $index + 1 }}</td>
                         <td class="px-4 py-2 border" id="nama-{{ $p->id }}">{{ $p->nama }}</td>
@@ -42,7 +42,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center py-4 text-gray-500">Belum ada data pegawai</td>
+                        <td colspan="7" class="text-center py-4 text-gray-500">Belum ada data perjalanan</td>
                     </tr>
                 @endforelse
             </tbody>

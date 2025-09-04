@@ -10,7 +10,7 @@ class PegawaiController extends Controller
 {
     public function index()
     {
-        return response()->json(pegawai::all());
+        return view('pegawai.dashboard');
     }
     public function count()
     {
@@ -26,13 +26,18 @@ class PegawaiController extends Controller
     public function list()
     {
         $pegawai = pegawai::all();
-        return view('admin.pegawai.index', compact('pegawai'));
+        return view('Admin.pegawai.index', compact('pegawai'));
     }
     public function create()
     {
-        return view('admin.pegawai.create');
+        return view('Admin.pegawai.create');
     }
 
+    public function edit()
+    {
+        $pegawai = pegawai::all();
+        return view('Admin.pegawai.edit', compact('pegawai'));
+    }
 //form tambah pegawai (admin)
     public function store(Request $request)
     {
@@ -64,13 +69,13 @@ class PegawaiController extends Controller
 
     $request->validate([
         'nama' => 'required|string|max:255',
-        'email' => 'required|email|unique:pegawai,email,' . $pegawai->id,
+        'email' => 'required|email|unique:pegawai,email,',
         'no_telepon' => 'required|string|max:20',
     ]);
 
     $pegawai->update($request->only(['nama', 'email', 'no_telepon']));
 
-    return response()->json(['success' => true, 'message' => 'Pegawai berhasil diperbarui']);
+    return redirect()->route('admin.pegawai.list');
 }
 
 }

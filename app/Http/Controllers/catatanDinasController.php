@@ -14,7 +14,7 @@ class catatanDinasController extends Controller
     public function index(CatatanDinas $catatan)
     {
         $data = $catatan::all();
-        return view('test00.crud.test' ,compact('data'));
+        return view('pegawai.CatatanDinas.index' ,compact('data'));
     }
 
     /**
@@ -22,7 +22,7 @@ class catatanDinasController extends Controller
      */
     public function create()
     {
-        return view('test00.crud.testporm');
+        return view('pegawai.CatatanDinas.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class catatanDinasController extends Controller
             'status' => $request->status,
             'catatan_lainnya' => $request->catatan_lainnya,
         ]));
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('pegawai.catatan.index');
         //w
     }
 
@@ -57,7 +57,7 @@ class catatanDinasController extends Controller
     {
         $catatan = CatatanDinas::find($id);
         $pegawai = pegawai::all();
-        return view("test00.crud.testpormedit" ,compact('catatan', 'pegawai'));
+        return view("pegawai.CatatanDinas.edit" ,compact('catatan', 'pegawai'));
     }
 
     /**
@@ -68,7 +68,7 @@ class catatanDinasController extends Controller
     {
         $catatan = CatatanDinas::find($id);
         $catatan->update($request->all());
-        return redirect()->route('catatan.index');
+        return redirect()->route('pegawai.catatan.index');
     }
     /**
      * Remove the specified resource from storage.
