@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class PegawaiController extends Controller
 {
+
+//export pegawai
     public function index()
     {
         return view('pegawai.dashboard');
