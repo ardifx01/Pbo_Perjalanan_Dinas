@@ -76,6 +76,6 @@ class catatanDinasController extends Controller
     public function destroy(string $id)
     {
         CatatanDinas::destroy($id);
-        return redirect()->route('catatan.index');
+        return redirect()->route('pegawai.catatan.index');
     }
 }
