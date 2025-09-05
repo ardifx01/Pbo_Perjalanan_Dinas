@@ -17,7 +17,7 @@
             <a href="{{ route('admin.dahsboard') }}" class="block text-center py-2 rounded-md bg-gray-200 hover:bg-gray-300 transition">
                 Dashboard
             </a>
-            <a href="{{ route('admin.pegawai.list') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
+            <a href="{{ route('admin.pegawai.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
                 Pegawai
             </a>
             <a href="#" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">

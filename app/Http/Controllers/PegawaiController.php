@@ -8,15 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class PegawaiController extends Controller
 {
-
-//export pegawai
+    //ADMIN PEGAWAI MANAGE LOGIC
     public function index()
     {
-        return view('pegawai.dashboard');
+        $pegawai = pegawai::all();
+        return view('Admin.pegawai.index', compact('pegawai'));
     }
+
+    //export pegawai
     public function count()
     {
-        $total = \App\Models\pegawai::count();
+        $total = pegawai::count();
 
         return response()->json([
             'labels' => ['Pegawai'],
@@ -24,20 +26,14 @@ class PegawaiController extends Controller
         ]);
     }
 
-//page daftar_pegawai (admin)
-    public function list()
-    {
-        $pegawai = pegawai::all();
-        return view('Admin.pegawai.index', compact('pegawai'));
-    }
     public function create()
     {
         return view('Admin.pegawai.create');
     }
 
-    public function edit()
+    public function edit(String $id)
     {
-        $pegawai = pegawai::all();
+        $pegawai = pegawai::find($id);
         return view('Admin.pegawai.edit', compact('pegawai'));
     }
 //form tambah pegawai (admin)
@@ -59,25 +55,32 @@ class PegawaiController extends Controller
             'role' => 'pegawai'
         ]);
 
-        return redirect()->route('admin.pegawai.list')->with('success', 'Pegawai berhasil ditambahkan!');
+        return redirect()->route('admin.pegawai.index')->with('success', 'Pegawai berhasil ditambahkan!');
     }
 
-
-
-//form inline-edit (masih eror)
     public function update(Request $request, $id)
-{
-    $pegawai = Pegawai::findOrFail($id);
+    {
+        $pegawai = Pegawai::findOrFail($id);
 
-    $request->validate([
-        'nama' => 'required|string|max:255',
-        'email' => 'required|email|unique:pegawai,email,',
-        'no_telepon' => 'required|string|max:20',
-    ]);
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:pegawai,email,',
+            'no_telepon' => 'required|string|max:20',
+        ]);
 
-    $pegawai->update($request->only(['nama', 'email', 'no_telepon']));
+        $pegawai->update($request->only(['nama', 'email', 'no_telepon']));
 
-    return redirect()->route('admin.pegawai.list');
-}
+        return redirect()->route('admin.pegawai.index');
+    }
 
+    public function destroy(String $id)
+    {
+
+    }
+
+    // Pegawai
+    public function show()
+    {
+       return view('pegawai.dashboard');
+    }
 }

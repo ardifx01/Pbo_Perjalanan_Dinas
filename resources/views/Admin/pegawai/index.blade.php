@@ -35,7 +35,8 @@
                         <td class="px-4 py-2 border">********</td>
                         <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->no_telepon }}</td>
                         <td class="px-4 py-2 border text-center">
-                            <button onclick="enableEdit({{ $p->id }})" id="edit-{{ $p->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.pegawai.edit') }}">Edit</a></button>
+                            {{-- <button onclick="enableEdit({{ $p->id }})" id="edit-{{ $p->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.pegawai.edit', $p->id) }}">Edit</a></button> --}}
+                            <a href="{{ route('admin.pegawai.edit', $p->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg">edit</a>
                             <button onclick="saveEdit({{ $p->id }})" id="save-{{ $p->id }}" class="hidden bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg">Save</button>
                             <button onclick="cancelEdit({{ $p->id }})" id="cancel-{{ $p->id }}" class="hidden bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded-lg">Cancel</button>
                         </td>
