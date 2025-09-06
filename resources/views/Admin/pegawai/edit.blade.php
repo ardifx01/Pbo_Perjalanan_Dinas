@@ -2,29 +2,29 @@
 
 @section('content')
 <div class="p-6 bg-gray-300 min-h-screen shadow-xl rounded-xl">
-    <h1 class="text-2xl font-bold mb-6">Tambah Pegawai Baru</h1>
+    <h1 class="text-2xl font-bold mb-6">Edit Pegawai</h1>
 
     <form action="{{ route('admin.pegawai.update', $pegawai->id) }}" method="POST" class="space-y-4">
         @csrf
         @method('PUT')
         <div>
             <label class="block font-semibold">Nama Pegawai</label>
-            <input type="text" name="nama" class="w-full border rounded-lg px-3 py-2" required>
+            <input type="text" name="nama" class="w-full border rounded-lg px-3 py-2" value="{{ $pegawai->nama }}">
         </div>
 
         <div>
             <label class="block font-semibold">Email</label>
-            <input type="email" name="email" class="w-full border rounded-lg px-3 py-2" required>
+            <input type="email" name="email" class="w-full border rounded-lg px-3 py-2" required value="{{ $pegawai->email }}">
         </div>
 
         <div>
             <label class="block font-semibold">NIP</label>
-            <input type="text" name="no_induk" class="w-full border rounded-lg px-3 py-2" required>
+            <input type="text" name="no_induk" class="w-full border rounded-lg px-3 py-2" required value="{{ $pegawai->no_induk }}">
         </div>
 
         <div>
             <label class="block font-semibold">No Telepon</label>
-            <input type="text" name="no_telepon" class="w-full border rounded-lg px-3 py-2" required>
+            <input type="text" name="no_telepon" class="w-full border rounded-lg px-3 py-2" required value="{{ $pegawai->no_telepon }}">
         </div>
 
         <div class="flex justify-between items-center mt-6">

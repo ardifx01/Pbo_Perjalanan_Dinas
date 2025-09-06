@@ -39,7 +39,7 @@ class AuthController extends Controller
             }
         }
         else{
-             return back()->withErrors([
+            return back()->withErrors([
             'no_induk' => 'The provided credentials do not match our records.',
             ]);
         }
