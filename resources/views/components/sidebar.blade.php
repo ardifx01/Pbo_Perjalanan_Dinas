@@ -20,7 +20,7 @@
             <a href="{{ route('admin.pegawai.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
                 Pegawai
             </a>
-            <a href="#" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
+            <a href="{{ route('admin.catatan.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
                 Data Perjalanan
             </a>
         </nav>
@@ -29,7 +29,7 @@
     <!-- Bagian bawah (Logout) -->
     <div class="p-4">
         <form action="{{ route("logout.process") }}" method="POST">
-             @csrf
+            @csrf
             <button class="w-full bg-red-700 hover:bg-red-800 text-white py-2 rounded-md transition">
                 Logout
             </button>

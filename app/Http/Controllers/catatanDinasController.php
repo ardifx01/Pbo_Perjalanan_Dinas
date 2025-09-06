@@ -24,7 +24,7 @@ class catatanDinasController extends Controller
      */
     public function create()
     {
-        return view('pegawai.CatatanDinas.create');
+        return view('Admin.catatan.create');
     }
 
     /**
@@ -41,7 +41,6 @@ class catatanDinasController extends Controller
             'catatan_lainnya' => $request->catatan_lainnya,
         ]));
         return redirect()->route('pegawai.catatan.index');
-        //w
     }
 
     /**
@@ -59,13 +58,13 @@ class catatanDinasController extends Controller
     {
         $catatan = CatatanDinas::find($id);
         $pegawai = pegawai::all();
-        return view("pegawai.CatatanDinas.edit" ,compact('catatan', 'pegawai'));
+        return view("Admin.catatan.edit" ,compact('catatan', 'pegawai'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    
+
     public function update(Request $request, String $id)
     {
         $catatan = CatatanDinas::find($id);

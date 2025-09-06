@@ -81,6 +81,6 @@ class PegawaiController extends Controller
     // Pegawai
     public function show()
     {
-       return view('pegawai.dashboard');
+        return view('pegawai.dashboard');
     }
 }
