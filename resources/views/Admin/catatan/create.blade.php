@@ -27,8 +27,8 @@
         </div>
 
         <div class="flex justify-between items-center mt-6">
-            <a href="{{ route('admin.pegawai.index') }}" class="text-emerald-600 hover:underline">← Back</a>
-            <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg">
+            <a href="{{ route('admin.catatan.index') }}" class="text-emerald-600 hover:underline">← Back</a>
+            <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg" href="{{ route('admin.catatan.index') }}">
                 SUBMIT
             </button>
         </div>

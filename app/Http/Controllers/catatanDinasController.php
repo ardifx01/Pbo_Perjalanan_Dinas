@@ -14,7 +14,7 @@ class catatanDinasController extends Controller
     public function index(CatatanDinas $catatan)
     {
         $data = $catatan::all();
-        return view('pegawai.CatatanDinas.index' ,compact('data'));
+        return view('Admin.catatan.index' ,compact('data'));
     }
 
     /**
@@ -22,7 +22,7 @@ class catatanDinasController extends Controller
      */
     public function create()
     {
-        return view('pegawai.CatatanDinas.create');
+        return view('Admin.catatan.create');
     }
 
     /**
@@ -38,8 +38,7 @@ class catatanDinasController extends Controller
             'status' => $request->status,
             'catatan_lainnya' => $request->catatan_lainnya,
         ]));
-        return redirect()->route('pegawai.catatan.index');
-        //w
+        return redirect()->route('Admin.catatan.index');
     }
 
     /**
@@ -57,18 +56,18 @@ class catatanDinasController extends Controller
     {
         $catatan = CatatanDinas::find($id);
         $pegawai = pegawai::all();
-        return view("pegawai.CatatanDinas.edit" ,compact('catatan', 'pegawai'));
+        return view("Admin.catatan.edit" ,compact('catatan', 'pegawai'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    
+
     public function update(Request $request, String $id)
     {
         $catatan = CatatanDinas::find($id);
         $catatan->update($request->all());
-        return redirect()->route('pegawai.catatan.index');
+        return redirect()->route('Admin.catatan.index');
     }
     /**
      * Remove the specified resource from storage.
@@ -76,6 +75,6 @@ class catatanDinasController extends Controller
     public function destroy(string $id)
     {
         CatatanDinas::destroy($id);
-        return redirect()->route('pegawai.catatan.index');
+        return redirect()->route('Admin.catatan.index');
     }
 }
