@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tanggal_pulang');
             $table->integer('no_induk');
             $table->foreign('no_induk')->references('no_induk')->on('pegawai')->onDelete('cascade');
-            $table->enum('status', ['belum','berlangsung', 'selesai'])->default('berlangsung');
+            $table->enum('status', ['Belum Berlangsung','Berlangsung', 'Selesai'])->default('Belum Berlangsung');
             $table->text('catatan_lainnya');
             $table->timestamps();
         });

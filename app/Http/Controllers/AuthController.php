@@ -17,33 +17,28 @@ class AuthController extends Controller
 
     public function LoginProcess(Request $request)
     {
-        $_loginVal = $request->validate([
+       $_loginVal = $request->validate([
             'no_induk' => ['required', 'integer'],
             'password' => ['required', 'string']
         ]);
 
-
-        $_pegawai = pegawai::where('no_induk', $_loginVal['no_induk'])->first();
-
-        if($_pegawai && Hash::check($_loginVal['password'], $_pegawai->password)){
-            Auth::guard('pegawai')->login($_pegawai);
+        if (Auth::guard('pegawai')->attempt([
+            'no_induk' => $_loginVal['no_induk'],
+            'password' => $_loginVal['password'],
+        ])) {
             $request->session()->regenerate();
 
-            if($_pegawai->role === 'admin')
-            {
-                return redirect()->route("admin.dahsboard");
-            }
-            else
-            {
+            $user = Auth::guard('pegawai')->user();
+            if ($user->role === 'admin') {
+                return redirect()->route("admin.dashboard");
+            } else {
                 return redirect()->route("pegawai.dashboard");
             }
         }
-        else{
-             return back()->withErrors([
-            'no_induk' => 'The provided credentials do not match our records.',
-            ]);
-        }
 
+        return back()->withErrors([
+            'no_induk' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function Logout(Request $request){

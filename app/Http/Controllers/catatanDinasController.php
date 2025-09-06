@@ -13,7 +13,9 @@ class catatanDinasController extends Controller
      */
     public function index(CatatanDinas $catatan)
     {
-        $data = $catatan::all();
+        $pegawai = Auth::guard('pegawai')->user();
+
+        $data = $catatan::where('no_induk', $pegawai->no_induk)->get();
         return view('pegawai.CatatanDinas.index' ,compact('data'));
     }
 
