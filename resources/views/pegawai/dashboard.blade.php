@@ -51,4 +51,15 @@
           
         </div>
     </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Jumlah Pegawai -->
+        <div class="bg-emerald-400 rounded-lg shadow-md p-4">
+            <h3 class="text-center text-white font-semibold mb-4">
+                Riwayat Perjalanan
+            </h3>
+            <div class="bg-white rounded-lg h-48 flex items-center justify-center">
+                <h2 class="text-black">{{}}</h2>
+            </div>
+        </div>
 @endsection

@@ -13,6 +13,10 @@
         </div>
 
         <div>
+            <label class="block font-semibold">password</label>
+            <input type="password" name="password" class="w-full border rounded-lg px-3 py-2" required>
+        </div>
+        <div>
             <label class="block font-semibold">Email</label>
             <input type="email" name="email" class="w-full border rounded-lg px-3 py-2" required value="{{ $pegawai->email }}">
         </div>

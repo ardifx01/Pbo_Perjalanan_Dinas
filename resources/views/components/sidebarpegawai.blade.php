@@ -14,11 +14,14 @@
 
         <!-- Menu -->
         <nav class="flex flex-col space-y-3 px-4">
-            <a href="{{ route('admin.dashboard') }}" class="block text-center py-2 rounded-md bg-gray-200 hover:bg-gray-300 transition">
+            <a href="{{ route('pegawai.dashboard') }}" class="block text-center py-2 rounded-md bg-gray-200 hover:bg-gray-300 transition">
                 Dashboard
             </a>
-            <a href="{{ route('admin.catatan.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
-                Data Perjalanan
+            <a href="{{ route('pegawai.catatan.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
+                Data Perjalananw
+            </a>
+            <a href="{{ route('pegawai.catatan.create') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
+                Tambah Data Perjalanan
             </a>
         </nav>
     </div>

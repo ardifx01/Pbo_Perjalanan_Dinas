@@ -13,15 +13,23 @@ class pegawaiSeed extends Seeder
 {
     public function run(): void
     {
-        for($i = 0; $i <= 10; $i++){
-            $faker = Faker::create('id_ID');
-            DB::table("pegawai")->insert([
-                'no_induk' => $faker->unique()->numberBetween(100000, 200000),
+        $faker = Faker::create('id_ID');
+         DB::table("pegawai")->insert([
+                'no_induk' => $faker->unique()->numberBetween(1000000, 2000000),
                 'nama' => $faker->name,
                 'email'=> $faker->email,
                 'no_telepon' => $faker->phoneNumber(),
-                'password' => Hash::make('1234'),
-                'role' => $faker->randomElement(['admin', 'pegawai']),
+                'password' => Hash::make('admin1234'),
+                'role' => 'admin',
+            ]);
+        for($i = 0; $i <= 10; $i++){
+            DB::table("pegawai")->insert([
+                'no_induk' => $faker->unique()->numberBetween(1000000, 2000000),
+                'nama' => $faker->name,
+                'email'=> $faker->email,
+                'no_telepon' => $faker->phoneNumber(),
+                'password' => Hash::make('pegawai1234'),
+                'role' => 'pegawai',
             ]);
 
         }

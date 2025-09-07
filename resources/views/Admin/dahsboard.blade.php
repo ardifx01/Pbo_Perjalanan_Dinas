@@ -41,8 +41,16 @@
                             <td class="border px-4 py-2">{{ $item->catatan_lainnya }}</td>
                             <td class="border px-4 py-2">{{ $item->status_tampil }}</td>
                             <td class="px-4 py-2 border text-center">
-                             <button onclick="saveEdit({{ $item->id }})"  class=" bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.catatan.approved', $item->id) }}">Disetujui</a></button>
-                             <button onclick="saveEdit({{ $item->id }})"  class=" bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.catatan.rejected', $item->id) }}">Ditolak</a></button>
+                             {{-- <button onclick="saveEdit({{ $item->id }})"  class=" bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.catatan.approved', $item->id) }}">Disetujui</a></button> --}}
+                             {{-- <button onclick="saveEdit({{ $item->id }})"  class=" bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.catatan.rejected', $item->id) }}">Ditolak</a></button> --}}
+                             <form action="{{ route('admin.catatan.approved', $item->id) }}" method="POST">
+                                @csrf @method('PUT')
+                                <button>Setujui</button>
+                             </form>
+                             <form action="{{ route('admin.catatan.rejected', $item->id) }}" method="POST">
+                                @csrf @method('PUT')
+                                <button>Tolak</button>
+                             </form>
                         </tr>
                     @empty
                         <tr>

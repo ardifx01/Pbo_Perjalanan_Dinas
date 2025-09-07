@@ -19,9 +19,14 @@ class CekRole
         // cek apakah user login dengan guard pegawai
         $user = Auth::guard('pegawai')->user();
 
+         if (!$user) {
+        // kalau belum login
+             abort(401, 'Unauthenticated.');
+        }
+
         if ($role && $user->role !== $role) {
             abort(403, 'Unauthorized.');
-        }
+            }
 
         return $next($request);
     }

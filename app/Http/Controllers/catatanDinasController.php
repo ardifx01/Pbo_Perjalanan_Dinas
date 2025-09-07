@@ -21,7 +21,7 @@ class catatanDinasController extends Controller
         }
         else
         {
-            $data = CatatanDinas::where('status_tampil', 'Disetujui')->whereHas('pegawai', function ($q) {$q->where('role', 'pegawai');})->get();
+            $data = CatatanDinas::whereHas('pegawai', function ($q) {$q->where('role', 'pegawai');})->get();
             return view('Admin.catatan.index' ,compact('data'));
         }
     }
@@ -47,7 +47,7 @@ class catatanDinasController extends Controller
             'tanggal_pulang' => $request->tanggal_pulang,
             'status' => $request->status,
             'catatan_lainnya' => $request->catatan_lainnya,
-            'status_tampil' => $request->status_tampil,
+            'status_tampil' => 'Tertunda',
         ]));
         return redirect()->route('pegawai.catatan.index');
     }
@@ -63,11 +63,13 @@ class catatanDinasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(String $id)
     {
-        $catatan = CatatanDinas::find($id);
+        $catatan = CatatanDinas::findOrFail($id);
         $pegawai = pegawai::all();
-        return view("Admin.catatan.edit" ,compact('catatan', 'pegawai'));
+        // dd($catatan);
+        return view("Admin.catatan.edit", compact('catatan', 'pegawai'));
+        
     }
 
     /**
@@ -76,20 +78,26 @@ class catatanDinasController extends Controller
 
     public function update(Request $request, String $id)
     {
-        $catatan = CatatanDinas::find($id);
+        $catatan = CatatanDinas::findOrFail($id);
         $catatan->update($request->all());
-        return redirect()->route('pegawai.catatan.index');
+
+        return redirect()->route('admin.catatan.index')
+        ->with('success', 'Data berhasil diperbarui!');
     }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(String $id)
     {
-        CatatanDinas::destroy($id);
-        return redirect()->route('pegawai.catatan.index');
+        $catatan = CatatanDinas::findOrFail($id);
+
+    // Hapus data
+        $catatan->delete();
+
+        return redirect()->route('admin.catatan.index')->with('success', 'Data berhasil dihapus!');
     }
 
-    public function Disetujui($id)
+    public function Disetujui(String $id)
     {
         $catatan = CatatanDinas::findOrFail($id);
         $catatan->update([
@@ -99,11 +107,11 @@ class catatanDinasController extends Controller
         return back()->with('success', 'Catatan dinas disetujui.');
     }
 
-    public function Ditolak(Request $request, $id)
+    public function Ditolak(Request $request, String $id)
     {
         $catatan = CatatanDinas::findOrFail($id);
         $catatan->update([
-            'status_tampil' => 'rejected',
+            'status_tampil' => 'Ditolak',
         ]);
 
         return back()->with('error', 'Catatan dinas ditolak.');

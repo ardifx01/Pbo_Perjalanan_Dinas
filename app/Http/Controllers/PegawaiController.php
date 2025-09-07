@@ -44,7 +44,7 @@ class PegawaiController extends Controller
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:pegawai,email',
             'no_induk' => 'required|unique:pegawai,no_induk',
-            'no_telepon' => 'required|string|max:20',
+            'no_telepon' => 'required|string|max:100',
         ]);
 
         Pegawai::create([
@@ -65,8 +65,9 @@ class PegawaiController extends Controller
 
         $request->validate([
             'nama' => 'required|string|max:255',
-            'email' => 'required|email|unique:pegawai,email,',
-            'no_telepon' => 'required|string|max:20',
+            'email' => 'required|email',
+            'no_telepon' => 'required|string|max:100',
+            'password' => 'required|string|max:100',
         ]);
 
         $pegawai->update($request->only(['nama', 'email', 'no_telepon']));
@@ -76,7 +77,12 @@ class PegawaiController extends Controller
 
     public function destroy(String $id)
     {
+        $pegawai = Pegawai::findOrFail($id);
 
+    // Hapus data
+        $pegawai->delete();
+
+        return redirect()->route('admin.pegawai.index')->with('success', 'Data berhasil dihapus!');
     }
 
     // Pegawai

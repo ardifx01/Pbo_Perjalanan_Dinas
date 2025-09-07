@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\CatatanDinas;
 
 class pegawai extends Authenticatable
 {
@@ -22,6 +23,6 @@ class pegawai extends Authenticatable
     ];
     public function Post()
     {
-        return $this->hasMany(catatan_dinas::class, 'no_induk' ,'no_induk');
+        return $this->hasMany(CatatanDinas::class, 'no_induk' ,'no_induk');
     }
 }

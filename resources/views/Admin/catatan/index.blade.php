@@ -3,14 +3,15 @@
 @section('content')
 <div class="p-6 bg-gray-300 min-h-screen shadow-xl rounded-xl">
     <h1 class="text-2xl font-bold mb-6">Daftar Pegawai</h1>
-
-    <!-- Tombol Create -->
+    
+    {{-- <!-- Tombol Create -->
     <div class="mb-4">
         <a href="{{ route('admin.catatan.create') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg">
             <i class="fas fa-user-plus"></i> Create Data
         </a>
-    </div>
+    </div> --}}
 
+    
     <!-- Tabel Pegawai -->
     <div class="overflow-x-auto bg-white shadow-md rounded-lg">
         <table class="min-w-full border-collapse border border-gray-200">
@@ -22,6 +23,7 @@
                     <th class="px-4 py-2 border">Tanggal Pulang</th>
                     <th class="px-4 py-2 border">No Induk</th>
                     <th class="px-4 py-2 border">Status</th>
+                    <th class="px-4 py-2 border">Status Tampil</th>
                     <th class="px-4 py-2 border">Catatan Lainnya</th>
                     <th class="px-4 py-2 border">Aksi</th>
                 </tr>
@@ -35,11 +37,18 @@
                         <td class="px-4 py-2 border">{{ $p->tanggal_pulang }}</td>
                         <td class="px-4 py-2 border">{{$p->no_induk}}</td>
                         <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->status }}</td>
+                        <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->status_tampil }}</td>
                         <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->catatan_lainnya }}</td>
                         <td class="px-4 py-2 border text-center">
-                            <button onclick="enableEdit({{ $p->id }})" id="edit-{{ $p->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.pegawai.edit', $p->id) }}">Edit</a></button>
+                            {{-- <button onclick="enableEdit({{ $p->id }})" id="edit-{{ $p->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.pegawai.edit', $p->id) }}">Edit</a></button>
                             <button onclick="saveEdit({{ $p->id }})" id="save-{{ $p->id }}" class="hidden bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg">Save</button>
-                            <button onclick="cancelEdit({{ $p->id }})" id="cancel-{{ $p->id }}" class="hidden bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded-lg">Cancel</button>
+                            <button onclick="cancelEdit({{ $p->id }})" id="cancel-{{ $p->id }}" class="hidden bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded-lg">Cancel</button> --}}
+                            <a href="{{ route('admin.catatan.edit', $p->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg">Edit</a>
+                            <form action="{{ route('admin.catatan.destroy', $p->id) }}" method="POST" onsubmit="return confirm('Yakin hapus data?')">
+                                 @csrf
+                                 @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                 @empty
