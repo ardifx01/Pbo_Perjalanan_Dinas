@@ -22,8 +22,18 @@
         </div>
 
         <div>
-            <label class="block font-semibold">Status</label>
-            
+            <label class="block font-semibold" for="status">Status</label>
+            <select name="status" id="status" class="border rounded p-2 w-full">
+                <option value="">-- Pilih Status --</option>
+                <option value="Belum Berlangsung">Belum Berlangsung</option>
+                <option value="Berlangsung">Berlangsung</option>
+                <option value="Selesai">Selesai</option>
+            </select>         
+        </div>
+
+            <div>
+            <label class="block font-semibold">Catatan Lainnya</label>
+            <input type="text" name="catatan_lainnya" class="w-full border rounded-lg px-3 py-2" required>
         </div>
 
         <div class="flex justify-between items-center mt-6">

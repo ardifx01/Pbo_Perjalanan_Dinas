@@ -11,8 +11,11 @@
 </head>
 <body class="flex">
     {{-- Navbar --}}
-
-    @include('components.sidebar')
+    @if(Auth::guard('pegawai')->check() && Auth::guard('pegawai')->user()->role === 'admin')
+        @include('components.sidebar')
+    @else
+        @include('components.sidebarpegawai')
+    @endif
 
     {{-- Content --}}
     <main class="container m-9">

@@ -14,9 +14,16 @@ class catatanDinasController extends Controller
     public function index(CatatanDinas $catatan)
     {
         $pegawai = Auth::guard('pegawai')->user();
-
-        $data = $catatan::where('no_induk', $pegawai->no_induk)->get();
-        return view('pegawai.CatatanDinas.index' ,compact('data'));
+        if(Auth::guard('pegawai')->check() && Auth::guard('pegawai')->user()->role === 'pegawai')
+        {
+            $data = $catatan::where('no_induk', $pegawai->no_induk)->get();
+            return view('pegawai.CatatanDinas.index' ,compact('data'));
+        }
+        else
+        {
+            $data = CatatanDinas::where('status_tampil', 'Disetujui')->whereHas('pegawai', function ($q) {$q->where('role', 'pegawai');})->get();
+            return view('Admin.catatan.index' ,compact('data'));
+        }
     }
 
     /**
@@ -24,7 +31,7 @@ class catatanDinasController extends Controller
      */
     public function create()
     {
-        return view('Admin.catatan.create');
+        return view('pegawai.CatatanDinas.create');
     }
 
     /**
@@ -32,13 +39,15 @@ class catatanDinasController extends Controller
      */
     public function store(Request $request)
     {
+       $pegawai = Auth::guard('pegawai')->user();
         CatatanDinas::create(([
-            'no_induk' => Auth::user()->no_induk, // FK ke pegawai
+            'no_induk' => $pegawai->no_induk, // FK ke pegawai
             'lokasi' => $request->lokasi,
             'tanggal_berangkat' => $request->tanggal_berangkat,
             'tanggal_pulang' => $request->tanggal_pulang,
             'status' => $request->status,
             'catatan_lainnya' => $request->catatan_lainnya,
+            'status_tampil' => $request->status_tampil,
         ]));
         return redirect()->route('pegawai.catatan.index');
     }
@@ -78,5 +87,25 @@ class catatanDinasController extends Controller
     {
         CatatanDinas::destroy($id);
         return redirect()->route('pegawai.catatan.index');
+    }
+
+    public function Disetujui($id)
+    {
+        $catatan = CatatanDinas::findOrFail($id);
+        $catatan->update([
+            'status_tampil' => 'Disetujui',
+        ]);
+
+        return back()->with('success', 'Catatan dinas disetujui.');
+    }
+
+    public function Ditolak(Request $request, $id)
+    {
+        $catatan = CatatanDinas::findOrFail($id);
+        $catatan->update([
+            'status_tampil' => 'rejected',
+        ]);
+
+        return back()->with('error', 'Catatan dinas ditolak.');
     }
 }

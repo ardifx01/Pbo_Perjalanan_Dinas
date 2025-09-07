@@ -22,7 +22,8 @@ class catatandinasSeed extends Seeder
                 'tanggal_pulang' => $faker->date(),
                 'no_induk'  => pegawai::inRandomOrder()->first()->no_induk,
                 'status' => $faker->randomElement(['Belum Berlangsung', 'Berlangsung',  'Selesai']),
-                'catatan_lainnya' => 'kurang tau apa'
+                'catatan_lainnya' => 'kurang tau apa',
+                'status_tampil' => $faker->randomElement(['Tertunda', 'Disetujui',  'Ditolak'])
             ]);
 
         }

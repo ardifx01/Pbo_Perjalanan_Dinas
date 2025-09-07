@@ -17,25 +17,27 @@
             <thead>
                 <tr class="bg-emerald-400 text-white">
                     <th class="px-4 py-2 border">NO</th>
-                    <th class="px-4 py-2 border">NAMA</th>
-                    <th class="px-4 py-2 border">EMAIL</th>
-                    <th class="px-4 py-2 border">NIP</th>
-                    <th class="px-4 py-2 border">PASSWORD</th>
-                    <th class="px-4 py-2 border">NO TELP</th>
-                    <th class="px-4 py-2 border">ACTION</th>
+                    <th class="px-4 py-2 border">Lokasi</th>
+                    <th class="px-4 py-2 border">Tanggal Berangkat</th>
+                    <th class="px-4 py-2 border">Tanggal Pulang</th>
+                    <th class="px-4 py-2 border">No Induk</th>
+                    <th class="px-4 py-2 border">Status</th>
+                    <th class="px-4 py-2 border">Catatan Lainnya</th>
+                    <th class="px-4 py-2 border">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($data as $index => $p)
                     <tr id="row-{{ $p->id }}" class="{{ $index % 2 == 0 ? 'bg-gray-100' : 'bg-white' }}">
                         <td class="px-4 py-2 border text-center">{{ $index + 1 }}</td>
-                        <td class="px-4 py-2 border" id="nama-{{ $p->id }}">{{ $p->nama }}</td>
-                        <td class="px-4 py-2 border" id="email-{{ $p->id }}">{{ $p->email }}</td>
-                        <td class="px-4 py-2 border">{{ $p->no_induk }}</td>
-                        <td class="px-4 py-2 border">********</td>
-                        <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->no_telepon }}</td>
+                        <td class="px-4 py-2 border" id="nama-{{ $p->id }}">{{ $p->lokasi }}</td>
+                        <td class="px-4 py-2 border" id="email-{{ $p->id }}">{{ $p->tanggal_berangkat }}</td>
+                        <td class="px-4 py-2 border">{{ $p->tanggal_pulang }}</td>
+                        <td class="px-4 py-2 border">{{$p->no_induk}}</td>
+                        <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->status }}</td>
+                        <td class="px-4 py-2 border" id="telp-{{ $p->id }}">{{ $p->catatan_lainnya }}</td>
                         <td class="px-4 py-2 border text-center">
-                            <button onclick="enableEdit({{ $p->id }})" id="edit-{{ $p->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.pegawai.edit') }}">Edit</a></button>
+                            <button onclick="enableEdit({{ $p->id }})" id="edit-{{ $p->id }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"><a href="{{ route('admin.pegawai.edit', $p->id) }}">Edit</a></button>
                             <button onclick="saveEdit({{ $p->id }})" id="save-{{ $p->id }}" class="hidden bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg">Save</button>
                             <button onclick="cancelEdit({{ $p->id }})" id="cancel-{{ $p->id }}" class="hidden bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded-lg">Cancel</button>
                         </td>

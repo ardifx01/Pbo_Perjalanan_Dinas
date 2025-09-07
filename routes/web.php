@@ -24,6 +24,9 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [admin::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/pegawai', PegawaiController::class)->names('admin.pegawai');
     Route::resource('/admin/catatandinas', CatatanDinasController::class)->names('admin.catatan');
+    Route::post('/admin/catatandinas/aproved', [CatatanDinasController::class, 'Disetujui'])->name('admin.catatan.approved');
+    Route::post('/admin/catatandinas/rejected', [CatatanDinasController::class, 'Ditolak'])->name('admin.catatan.rejected');
+
 });
 
 // Pegawai routes

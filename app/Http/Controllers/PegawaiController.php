@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\pegawai;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\CatatanDinas;
+use Illuminate\Support\Facades\Auth;
 class PegawaiController extends Controller
 {
     //ADMIN PEGAWAI MANAGE LOGIC
@@ -81,6 +82,9 @@ class PegawaiController extends Controller
     // Pegawai
     public function show()
     {
-        return view('pegawai.dashboard');
+        $pegawai = Auth::guard('pegawai')->user();
+
+        $data = CatatanDinas::where('no_induk', $pegawai->no_induk)->where('status_tampil', 'Tertunda')->get();
+        return view('pegawai.dashboard', compact('data'));
     }
 }
