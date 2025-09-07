@@ -21,7 +21,10 @@ class catatanDinasController extends Controller
         }
         else
         {
+
             $data = CatatanDinas::whereHas('pegawai', function ($q) {$q->where('role', 'pegawai');})->get();
+
+
             return view('Admin.catatan.index' ,compact('data'));
         }
     }
@@ -39,7 +42,7 @@ class catatanDinasController extends Controller
      */
     public function store(Request $request)
     {
-       $pegawai = Auth::guard('pegawai')->user();
+        $pegawai = Auth::guard('pegawai')->user();
         CatatanDinas::create(([
             'no_induk' => $pegawai->no_induk, // FK ke pegawai
             'lokasi' => $request->lokasi,

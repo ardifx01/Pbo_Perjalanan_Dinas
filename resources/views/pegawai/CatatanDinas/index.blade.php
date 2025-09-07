@@ -18,7 +18,7 @@
                 <th class="border px-4 py-2">Catatan Lainnya</th>
                 <th class="border px-4 py-2">Status Tampil</th>
             </tr>
-        </thead>
+        </thead>    
         <tbody>
             @forelse($data as $index => $item)
                 <tr>

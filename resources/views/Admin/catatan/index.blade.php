@@ -3,16 +3,16 @@
 @section('content')
 <div class="p-6 bg-gray-300 min-h-screen shadow-xl rounded-xl">
     <h1 class="text-2xl font-bold mb-6">Daftar Pegawai</h1>
-    
-    {{-- <!-- Tombol Create -->
-    <div class="mb-4">
+
+    <!-- Tombol Create -->
+    {{-- <div class="mb-4">
         <a href="{{ route('admin.catatan.create') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg">
             <i class="fas fa-user-plus"></i> Create Data
         </a>
     </div> --}}
 
-    
     <!-- Tabel Pegawai -->
+      <!-- Tabel Pegawai -->
     <div class="overflow-x-auto bg-white shadow-md rounded-lg">
         <table class="min-w-full border-collapse border border-gray-200">
             <thead>
