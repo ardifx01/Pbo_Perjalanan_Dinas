@@ -18,7 +18,7 @@
                 Dashboard
             </a>
             <a href="{{ route('pegawai.catatan.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
-                Data Perjalananw
+                Data Perjalanan
             </a>
             <a href="{{ route('pegawai.catatan.create') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
                 Tambah Data Perjalanan

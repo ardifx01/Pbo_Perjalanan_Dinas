@@ -6,6 +6,7 @@
     <title>@yield('title', 'Aplikasi Laravel')</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @stack('styles') {{-- Tambahan style dari child view --}}
 </head>

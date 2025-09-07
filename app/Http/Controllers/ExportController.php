@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\PegawaiExport;
+use \App\Exports\riwayatcatatandinas;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
-    public function exportPegawai()
+    public function exportCatatandinas()
     {
-        return Excel::download(new PegawaiExport, 'pegawai.xlsx');
+        return Excel::download(new riwayatcatatandinas, 'Riwayat_Catatan_Dinas.xlsx');
     }
 }

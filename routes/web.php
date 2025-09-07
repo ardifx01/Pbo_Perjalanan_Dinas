@@ -1,6 +1,6 @@
 <?php
 
-use App\Exports\PegawaiExport;
+use App\Exports\riwayatcatatandinas;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatatanDinasController;
@@ -36,4 +36,4 @@ Route::middleware(['role:pegawai'])->group(function () {
 });
 
 // Route export
-Route::get('/export/pegawai', [ExportController::class, 'exportPegawai']);
+Route::get('/export/RCT', [ExportController::class, 'exportCatatandinas']);

@@ -19,10 +19,10 @@ class PegawaiController extends Controller
     //export pegawai
     public function count()
     {
-        $total = pegawai::count();
+        $total = CatatanDinas::count();
 
         return response()->json([
-            'labels' => ['Pegawai'],
+            'labels' => ['Riwayat Catatan'],
             'values' => [$total],
         ]);
     }
