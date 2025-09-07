@@ -28,7 +28,7 @@
                 <option value="Belum Berlangsung">Belum Berlangsung</option>
                 <option value="Berlangsung">Berlangsung</option>
                 <option value="Selesai">Selesai</option>
-            </select>         
+            </select>
         </div>
 
             <div>

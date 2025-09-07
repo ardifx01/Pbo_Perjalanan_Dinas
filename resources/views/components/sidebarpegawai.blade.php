@@ -14,10 +14,10 @@
 
         <!-- Menu -->
         <nav class="flex flex-col space-y-3 px-4">
-            <a href="{{ route('admin.dashboard') }}" class="block text-center py-2 rounded-md bg-gray-200 hover:bg-gray-300 transition">
+            <a href="{{ route('pegawai.dashboard') }}" class="block text-center py-2 rounded-md bg-gray-200 hover:bg-gray-300 transition">
                 Dashboard
             </a>
-            <a href="{{ route('admin.catatan.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
+            <a href="{{ route('admin.pegawai.index') }}" class="block text-center py-2 rounded-md bg-white hover:bg-gray-200 transition">
                 Data Perjalanan
             </a>
         </nav>

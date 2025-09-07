@@ -32,7 +32,7 @@ Route::middleware(['role:admin'])->group(function () {
 // Pegawai routes
 Route::middleware(['role:pegawai'])->group(function () {
     Route::get('/pegawai/dashboard', [PegawaiController::class, 'show'])->name('pegawai.dashboard');
-    Route::resource('/pegawai/catatandinas', CatatanDinasController::class)->names('pegawai.catatan');
+    Route::resource('/pegawai/catatandinas', CatatanDinasController::class)->names('pegawai.CatatanDinas.index');
 });
 
 // Route export
