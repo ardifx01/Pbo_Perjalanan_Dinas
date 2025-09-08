@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-6 bg-gray-300 min-h-screen shadow-xl rounded-xl">
+<div class="p-6 bg-white border border-gray-300 w-full max-h-[600px] shadow-2xl rounded-xl">
     <h1 class="text-2xl font-bold mb-6">Edit Pegawai</h1>
 
     <form action="{{ route('admin.pegawai.update', $pegawai->id) }}" method="POST" class="space-y-4">

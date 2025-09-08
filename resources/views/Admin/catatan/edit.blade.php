@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-6 bg-gray-300 min-h-screen shadow-xl rounded-xl">
+<div class="p-6 bg-white border border-gray-300 w-full max-h-[800px] shadow-xl rounded-xl">
     <h1 class="text-2xl font-bold mb-6">Edit Catatan Dinas</h1>
 
     <form action="{{ route('admin.catatan.update', $catatan->id) }}" method="POST" class="space-y-4">
@@ -11,21 +11,21 @@
         <!-- Lokasi -->
         <div>
             <label class="block font-semibold">Lokasi</label>
-            <input type="text" name="lokasi" value="{{ old('lokasi', $catatan->lokasi) }}" 
+            <input type="text" name="lokasi" value="{{ old('lokasi', $catatan->lokasi) }}"
                 class="w-full border rounded-lg px-3 py-2" required>
         </div>
 
         <!-- Tanggal Berangkat -->
         <div>
             <label class="block font-semibold">Tanggal Berangkat</label>
-            <input type="date" name="tanggal_berangkat" value="{{ old('tanggal_berangkat', $catatan->tanggal_berangkat) }}" 
+            <input type="date" name="tanggal_berangkat" value="{{ old('tanggal_berangkat', $catatan->tanggal_berangkat) }}"
                 class="w-full border rounded-lg px-3 py-2" required>
         </div>
 
         <!-- Tanggal Pulang -->
         <div>
             <label class="block font-semibold">Tanggal Pulang</label>
-            <input type="date" name="tanggal_pulang" value="{{ old('tanggal_pulang', $catatan->tanggal_pulang) }}" 
+            <input type="date" name="tanggal_pulang" value="{{ old('tanggal_pulang', $catatan->tanggal_pulang) }}"
                 class="w-full border rounded-lg px-3 py-2" required>
         </div>
 
@@ -64,7 +64,7 @@
         <!-- Catatan Lainnya -->
         <div>
             <label class="block font-semibold">Catatan Lainnya</label>
-            <textarea name="catatan_lainnya" rows="4" 
+            <textarea name="catatan_lainnya" rows="4"
                 class="w-full border rounded-lg px-3 py-2">{{ old('catatan_lainnya', $catatan->catatan_lainnya) }}</textarea>
         </div>
 

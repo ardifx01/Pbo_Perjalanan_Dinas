@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-6 bg-gray-300 min-h-screen shadow-xl rounded-xl">
+<div class="p-6 bg-white max-h-[600px] w-full border border-gray-300 shadow-2xl rounded-xl">
     <h1 class="text-2xl font-bold mb-6">Tambah Pegawai Baru</h1>
 
     <form action="{{ route('admin.pegawai.store') }}" method="POST" class="space-y-4">
