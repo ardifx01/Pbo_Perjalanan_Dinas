@@ -10,12 +10,12 @@ class chartController extends Controller
 {
     public function chartByRole()
     {
-        $data = pegawai::selectRaw('role, COUNT(*) as total')
+        $chart = pegawai::selectRaw('role, COUNT(*) as total')
                                 ->groupBy('role')
                                 ->pluck('total', 'role');
 
-        $labels = $data->keys();
-        $totals = $data->values();
+        $labels = $chart->keys();
+        $totals = $chart->values();
 
         return view('admin.dahsboard', compact('labels', 'totals'));
     }

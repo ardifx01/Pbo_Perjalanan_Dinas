@@ -15,7 +15,6 @@ class admin extends Controller
 
         $data = CatatanDinas::where('status_tampil', 'Tertunda')->whereHas('pegawai', function ($q) {
         $q->where('role', 'pegawai');})->get();
-        return view("Admin.dahsboard", compact('data'));
-        //mmmk satria control
+        return view('admin.dashboard', compact('data'));
     }
 }
