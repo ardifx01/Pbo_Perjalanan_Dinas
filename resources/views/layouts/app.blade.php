@@ -7,6 +7,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     @stack('styles') {{-- Tambahan style dari child view --}}
+    @include('sweetalert2::index')
 </head>
 <body class="flex">
     {{-- Navbar --}}

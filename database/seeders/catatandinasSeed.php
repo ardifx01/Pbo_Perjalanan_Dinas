@@ -14,7 +14,7 @@ class catatandinasSeed extends Seeder
      */
     public function run(): void
     {
-         for($i = 0; $i <= 10; $i++){
+        for($i = 0; $i <= 10; $i++){
             $faker = Faker::create('id_ID');
             DB::table("catatandinas")->insert([
                 'lokasi' => $faker->address,
